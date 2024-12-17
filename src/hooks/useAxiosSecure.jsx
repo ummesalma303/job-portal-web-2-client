@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 // import React from 'react';
 const axiosInstance = axios.create({
-    baseURL:"http://localhost:5000",
+    baseURL:"https://job-portal-server-for-recruiter-part3-omega.vercel.app",
     withCredentials:true
 })
 const useAxiosSecure = () => {
