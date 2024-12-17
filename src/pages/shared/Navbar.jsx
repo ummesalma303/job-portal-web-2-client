@@ -57,9 +57,11 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
+           
             <div className="navbar-end">
                 {
                     user ? <>
+                        <h2>{user?.email}</h2>
                         <button onClick={handleSignOut} className="btn">Sign out</button>
                     </> : <>
                         <Link to="/register">Register</Link>
