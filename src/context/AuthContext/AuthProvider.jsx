@@ -3,9 +3,11 @@ import AuthContext from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from '../../firebase/firebase.init';
 import axios from "axios"
+// import useAxiosSecure from '../../hooks/useAxiosSecure';
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+    // const axiosInstance = useAxiosSecure()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -36,6 +38,7 @@ const AuthProvider = ({ children }) => {
             console.log('state captured -->', currentUser?.email)
             if (currentUser?.email) {
                 const user = {email: currentUser.email}
+                // axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
                 axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
                 .then(res=>{
                     console.log('login token',res.data)
