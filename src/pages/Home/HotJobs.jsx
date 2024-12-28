@@ -3,6 +3,7 @@ import HotJobCard from './HotJobCard';
 
 const HotJobs = () => {
     const [jobs, setJobs] = useState([]);
+   
 
     useEffect(() => {
         fetch('https://job-portal-server-for-recruiter-part3-omega.vercel.app/jobs')

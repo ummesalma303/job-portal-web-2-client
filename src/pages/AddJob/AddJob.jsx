@@ -15,7 +15,7 @@ const AddJob = () => {
         // console.log(initialData)
         const { min, max, currency, ...newJob } = initialData;
         console.log(min, max, currency, newJob)
-        newJob.salaryRange = { min, max, currency }
+        newJob.salaryRange = { min: parseInt(min), max: parseInt(max), currency }
         newJob.requirements = newJob.requirements.split('\n');
         newJob.responsibilities = newJob.responsibilities.split('\n')
         console.log(newJob);
@@ -60,12 +60,13 @@ const AddJob = () => {
                     </label>
                     <input type="text" name='location' placeholder="Job Location" className="input input-bordered" required />
                 </div>
-                {/* job Type */}
-                <div className="form-control">
+               <div className="flex space-x-2 w-full">
+                 {/* job Type */}
+                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Job Type</span>
                     </label>
-                    <select defaultValue="Pick a Job type" className="select select-ghost w-full max-w-xs">
+                    <select defaultValue="Pick a Job type" className="select select-ghost w-full max-w-xs input input-bordered">
                         <option disabled>Pick a Job type</option>
                         <option>Full-time</option>
                         <option>Intern</option>
@@ -77,7 +78,7 @@ const AddJob = () => {
                     <label className="label">
                         <span className="label-text">Job Field</span>
                     </label>
-                    <select defaultValue="Pick a Job Field" className="select select-ghost w-full max-w-xs">
+                    <select defaultValue="Pick a Job Field" className="select select-ghost w-full max-w-xs input input-bordered">
                         <option disabled>Pick a Job Field</option>
                         <option>Engineering</option>
                         <option>Marketing</option>
@@ -85,16 +86,17 @@ const AddJob = () => {
                         <option>Teaching</option>
                     </select>
                 </div>
+               </div>
                 {/* salary range */}
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 items-end'>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Salary Range</span>
                         </label>
-                        <input type="text" name='min' placeholder="Min" className="input input-bordered" required />
+                        <input type="number" name='min' placeholder="Min" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
-                        <input type="text" name='max' placeholder="Max " className="input input-bordered" required />
+                        <input type="number" name='max' placeholder="Max " className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <select defaultValue="Currency" name="currency" className="select select-ghost w-full max-w-xs">
@@ -138,7 +140,7 @@ const AddJob = () => {
                     <label className="label">
                         <span className="label-text">HR Name</span>
                     </label>
-                    <input type="text" name='hr_name' placeholder="HR Name" className="input input-bordered" required />
+                    <input type="text" name='hr_name' readOnly placeholder="HR Name" className="input input-bordered" required />
                 </div>
 
                 {/* HR Email */}
@@ -146,7 +148,7 @@ const AddJob = () => {
                     <label className="label">
                         <span className="label-text">HR Email</span>
                     </label>
-                    <input type="text" defaultValue={user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required />
+                    <input type="text" readOnly defaultValue={user?.email} name='hr_email' placeholder="HR Email" className="input input-bordered" required />
                 </div>
                 {/* application Deadline */}
                 <div className="form-control">
