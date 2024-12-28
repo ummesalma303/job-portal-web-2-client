@@ -8,9 +8,9 @@ const AllJobs = () => {
     const [search,setSearch] = useState('');
     const [minSalary,setMinSalary] = useState('');
     const [maxSalary,setMaxSalary] = useState('');
-    const {jobs,loading} = useJobs(sort,search,minSalary,maxSalary)
+    const {jobs,isLoading} = useJobs(sort,search,minSalary,maxSalary)
     //  console.log(sort)
-    if (loading) {
+    if (isLoading) {
         return <div><h2>Loading...</h2></div>
     }
     console.log(search)
@@ -28,7 +28,7 @@ const AllJobs = () => {
             </div>
            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
            {
-                jobs.map(job=><HotJobCard job={job} key={job._id}></HotJobCard>)
+                jobs?.map(job=><HotJobCard job={job} key={job._id}></HotJobCard>)
             }
            </div>
         </div>

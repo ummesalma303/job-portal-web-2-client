@@ -13,6 +13,7 @@ import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
 import AllJobs from "../pages/AllJobs/AllJobs";
+import Carousel from "../pages/Home/Carousel";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path:"/jobs",
         element:<AllJobs/>
+      },
+      {
+        path:'/slider',
+        element:<Carousel></Carousel>
       },
       {
         path: 'jobs/:id',
